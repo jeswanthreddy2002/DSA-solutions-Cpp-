@@ -40,7 +40,7 @@ class Solution
        int j=0;
        for(int i=1;i<n;i++)
        {  //cout<<c[i].st<<" "<<c[j].end<<endl;
-           if(c[i].st<=c[i].end&&c[i].st>c[j].end)
+           if(c[i].st>c[j].end)
            { //cout<<count;
                count++;
                j=i;
