@@ -12,20 +12,19 @@ class Solution {
        queue<int>q;
        vector<int>visited(V+1,0);
       q.push(0);
+      visited[0]=1;
        while(!q.empty())
        {  int top=q.front();
-           if(!visited[top])
-       {
-           
-           
-           visited[top]=1;
+            q.pop();
+          res.push_back(top);
+     
            for(int i=0;i<adj[top].size();i++)
-           {
+           {  if(!visited[adj[top][i]]==1)
+           {   visited[adj[top][i]]=1;
                q.push(adj[top][i]);
            }
-           res.push_back(top);
-       }
-       q.pop();
+           }
+          
            
        }
        return res;
