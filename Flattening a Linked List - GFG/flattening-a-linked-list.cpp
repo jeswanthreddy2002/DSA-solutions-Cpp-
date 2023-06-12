@@ -160,7 +160,7 @@ Node *flatten(Node *root)
    {
        return root;
    }
-    Node*down=root;
+    
     
    root->next=flatten(root->next);
    Node*result=merge(root,root->next);
