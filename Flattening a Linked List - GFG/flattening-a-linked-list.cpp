@@ -113,14 +113,7 @@ struct Node{
     the flattened linked list. */
     Node* merge(Node*down,Node*right)
     {
-        if(right==NULL)
-        {
-            return down;
-        }
-        if(down==NULL)
-        {
-            return right;
-        }
+        
         Node*temp=new Node(-1);
         Node*ans=temp;
         while(down&&right)
