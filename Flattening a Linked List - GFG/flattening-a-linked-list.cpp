@@ -155,8 +155,8 @@ Node *flatten(Node *root)
    }
     
     
-   root->next=flatten(root->next);
-   Node*result=merge(root,root->next);
+   Node*pointer=flatten(root->next);
+   Node*result=merge(root,pointer);
    return result;
 }
 
