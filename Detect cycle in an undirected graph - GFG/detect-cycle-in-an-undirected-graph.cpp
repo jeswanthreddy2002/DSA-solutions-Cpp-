@@ -6,56 +6,24 @@ using namespace std;
 class Solution {
   public:
     //Function to detect cycle in an undirected graph.
-    // bool rec(vector<int>adj[],int visited[],int r,int par)
-    // {  
-    //     for(auto it:adj[r])
-    //     {
-    //         if(!visited[it])
-    //         {  
-    //             visited[it]=1;
-    //             if( rec(adj,visited,it,r))
-    //         {
-    //             return true;
-    //         }
-                
-    //         }
-    //       else if(par!=it)
-    //       {
-    //           return true;
-    //       }
-    //     }
-        
-    //     return false;
-    // }
-    // bool isCycle(int V, vector<int> adj[]) {
-    //     // Code here
-    //     int visited[V]={0};
-    //     visited[0]=1;
-    //     return rec(adj,visited,0,-1);
-    //}
-    bool ans(int i,int V, vector<int> adj[],int visited[])
-    {
-        queue<pair<int,int>>q;
-        q.push({i,-1});
-        visited[i]=1;
-        
-        while(!q.empty())
+    bool rec(vector<int>adj[],int visited[],int r,int par)
+    {  
+        for(auto it:adj[r])
         {
-            pair<int,int> st=q.front();
-            q.pop();
-            for(auto it:adj[st.first])
+            if(!visited[it])
+            {  
+                visited[it]=1;
+                if( rec(adj,visited,it,r))
             {
-                if(!visited[it])
-                { visited[it]=1;
-                    q.push({it,st.first});
-                }
-                else if(st.second!=it){
-                    return true;
-                }
+                return true;
+            }
                 
             }
+          else if(par!=it)
+          {
+              return true;
+          }
         }
-        
         
         return false;
     }
@@ -63,18 +31,59 @@ class Solution {
         // Code here
         int visited[V]={0};
         for(int i=0;i<V;i++)
-        { if(!visited[i])
-        {
-            if(ans(i,V,adj,visited))
-            {
-                return true;
-            }
+        {  if(!visited[i])
+        { visited[i]=1;
+         if (rec(adj,visited,i,-1))
+         {
+          return true;   
+         }
         }
         }
         return false;
-        
     }
 };
+    // bool ans(int i,int V, vector<int> adj[],int visited[])
+    // {
+    //     queue<pair<int,int>>q;
+    //     q.push({i,-1});
+    //     visited[i]=1;
+        
+    //     while(!q.empty())
+    //     {
+    //         pair<int,int> st=q.front();
+    //         q.pop();
+    //         for(auto it:adj[st.first])
+    //         {
+    //             if(!visited[it])
+    //             { visited[it]=1;
+    //                 q.push({it,st.first});
+    //             }
+    //             else if(st.second!=it){
+    //                 return true;
+    //             }
+                
+    //         }
+    //     }
+        
+        
+    //     return false;
+    // }
+    // bool isCycle(int V, vector<int> adj[]) {
+    //     // Code here
+    //     int visited[V]={0};
+    //     for(int i=0;i<V;i++)
+    //     { if(!visited[i])
+    //     {
+    //         if(ans(i,V,adj,visited))
+    //         {
+    //             return true;
+    //         }
+    //     }
+    //     }
+    //     return false;
+        
+    // }
+//};
 
 //{ Driver Code Starts.
 int main() {
